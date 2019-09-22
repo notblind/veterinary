@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ doc.user.last_name }} {{ doc.user.first_name }}
+{% endblock %}
+
+{% block content_title %}
+	{{ doc.user.last_name }} {{ doc.user.first_name }} {{ doc.middle }}
+{% endblock %}
+
+{% block content %}
+	<div class="row docdetail">
+		<div class="col-md-4">
+			<img class="img-fluid  rounded" src="{% static 'images/doctors/' %}{{ doc.id }}.jpg">
+		</div>
+		<div class="col-md-8">
+			<h3>{{ doc.user.last_name }} {{ doc.user.first_name }} {{ doc.middle }}</h3>
+			<p><b>Специализация:</b> {{ doc.position }}</p>
+			<p><b>Образование:</b> {{ doc.education }}</p>
+			<p><b>Профессиональные интересы:</b> {{ doc.interests }}</p>
+		</div>
+	</div>
+{% endblock %}

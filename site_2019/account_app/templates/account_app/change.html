@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+	редактировать профиль
+{% endblock %}
+
+{% block content_title %}
+	Редактироать профиль
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-8 offset-md-2">
+		<form method="POST" action="{% url 'change_profile' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<div class="forms">
+				<p class="forms-name">{{ form.name.label }}</p>
+				{% bootstrap_field form.name show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.surname.label }}</p>
+				{% bootstrap_field form.surname show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.middle.label }}</p>
+				{% bootstrap_field form.middle show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.email.label }}</p>
+				{% bootstrap_field form.email show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.education.label }}</p>
+				{% bootstrap_field form.education show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.interests.label }}</p>
+				{% bootstrap_field form.interests show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.position.label }}</p>
+				{% bootstrap_field form.position show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.foto.label }}</p>
+				{% bootstrap_field form.foto show_label=False %}
+			</div>
+
+
+
+
+			<button class='forms-btn btn btn-secondary' type='submit'>Изменить</button>
+		</form>
+
+		{# Assumes you setup the password_reset view in your URLconf #}
+		<!-- <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p> -->
+	</div>
+
+{% endblock %}

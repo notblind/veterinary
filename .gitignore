@@ -1,0 +1,10 @@
+site_2019/db.sqlite3
+site_2019/account_app/__pycache__
+site_2019/account_app/__init__.py
+site_2019/comments_app/__pycache__
+site_2019/comments_app/__init__.py
+site_2019/site_2019/settings.py
+site_2019/site_2019/__pycache__
+site_2019/site_2019/__init__.py
+site_2019/veterinary_app/__pycache__
+site_2019/veterinary_app/__init__.py

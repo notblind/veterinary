@@ -1,0 +1,249 @@
+header {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+header .logo .l-logo {
+  color: #222222;
+  font-family: Lobster;
+  font-size: 2em;
+  letter-spacing: 0;
+  font-weight: 200;
+}
+header .logo .l-logo a {
+  text-decoration: none;
+}
+header .logo p {
+  color: #000000;
+  font-family: Averta;
+  font-size: 1em;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+header .logo p span {
+  text-align: center;
+}
+header .logo .address {
+  margin-left: 15px;
+}
+.navbar {
+  background-color: #ffffff;
+  z-index: 100;
+}
+.navbar .navbar-nav .nav-item .first {
+  padding-left: 0;
+  margin-left: 0;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+  color: '';
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.name {
+  margin-top: 20px;
+  position: relative;
+  background-image: url(../images/cats.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000000;
+}
+.name-back {
+  background: rgba(0, 0, 0, 0.5);
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+}
+.name-back p {
+  color: #ffffff;
+  font-family: Averta;
+  font-size: 2.5em;
+  letter-spacing: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.mainpage {
+  position: relative;
+  background-image: url(../images/bear.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000000;
+  height: 100%;
+}
+.mainpage-back {
+  background: rgba(0, 0, 0, 0.5);
+  height: 800px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+}
+.mainpage-back p {
+  color: #ffffff;
+  font-family: Averta;
+  font-size: 2.5em;
+  letter-spacing: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.space {
+  height: 50px;
+}
+footer {
+  background-color: #222222;
+  height: 50px;
+}
+footer p {
+  margin: auto;
+  text-align: center;
+  color: #ffffff;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.nav .nav-item .nav-link:hover {
+  color: #222222;
+}
+.nav .nav-item .nm {
+  color: #757575;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.nav .nav-item .dictionary {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #757575;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.dict {
+  margin-bottom: 30px;
+}
+.active2 {
+  color: #222222 !important;
+}
+.active2 a {
+  color: #222222 !important;
+}
+.doc-box {
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.doc-box .doc-img {
+  height: 300px;
+  width: 100%;
+}
+.doc-box .f {
+  margin: 0;
+  text-decoration: none;
+  color: #000000;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.doc-box .s {
+  color: #8fc3d4;
+  font-family: Averta;
+  font-size: 1em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.paginationf {
+  margin-top: 30px;
+}
+.pagination .page-item a {
+  color: #757575;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.pagination .page-item .page-link:hover {
+  color: #222222;
+}
+.docdetail {
+  color: #000000;
+  font-family: Averta;
+  font-size: 1.2em;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:visited {
+  color: #000000;
+  /* Цвет посещенных ссылок */
+}
+a:active {
+  color: #000000;
+  /* Цвет активных ссылок */
+}
+.table .main-line {
+  background-color: #D3D3D3;
+}
+.forms {
+  margin-bottom: 20px;
+}
+.forms-name {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  color: #757575;
+  font-family: Averta;
+  font-size: 1.2em;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.forms-btn {
+  margin: 0;
+  margin-bottom: 30px;
+}
+.comments-item {
+  background-color: #757575;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.comments-item p {
+  color: #ffffff;
+  font-family: Averta;
+  font-size: 1.1em;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Lobster";
+  src: url(../fonts/Lobster.woff2) format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Averta";
+  src: url(../fonts/AvertaCY-Regular.woff2) format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}

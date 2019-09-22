@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Отзывы
+{% endblock %}
+
+{% block content_title %}
+	Отзывы
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-8 offset-md-2">
+		<form method="POST">
+			{% csrf_token %}
+			{% for item in form %}
+				<div class="forms">
+					<p class="forms-name">{{ item.label }}</p>
+					{{ item }}
+				</div>
+			{% endfor %}
+			<button class='forms-btn btn btn-secondary' type='submit'>Отправить</button>
+		</form>
+	</div>
+	<div class = "offset-md-2 col-md-8 comments">
+		{% for item in model %}
+			<div class="comments-item">
+				<p>{{ item.surname }} {{ item.name }}</p>
+				<p>{{ item.message }}</p>
+				<p>Дата: {{ item.timedate }}</p>
+			</div>
+		{% endfor %}
+	</div>
+	{% if is_paginated %}
+	<ul class="offset-md-3 col-md-6 d-flex justify-content-center pagination">
+	    <li class="page-item {% if not prev_url %} disabled {% endif %}">
+	        <a class="page-link" href="./{{ prev_url }}" tabindex="-1">Previous</a>
+	    </li>
+	    {% for item in model.paginator.page_range %}
+	    <li class="page-item {% if item == model.number %} active {% endif %}">
+	        <a class="page-link" href="./?page={{ item }}">{{ item }}</a>
+	    </li>
+	    {% endfor %}
+	    <li class="page-item {% if not next_url %} disabled {% endif %}">
+	        <a class="page-link" href="./{{ next_url }}">Next</a>
+	    </li>
+	</ul>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}
+	Личный кабинет
+{% endblock %}
+
+{% block content_title %}
+	Личный кабинет
+{% endblock %}
+
+{% block content %}
+	<div class="row docdetail">
+		<div class="offset-md-2 col-md-8">
+			<div class="row">
+				<button onclick="location.href='{% url 'change_profile' %}'" class='m-2 forms-btn btn btn-secondary' type='submit'>Редактировать профиль</button>
+				<button onclick="location.href='{% url 'logout' %}'" class='m-2 forms-btn btn btn-danger' type='submit'>Выйти</button>	
+			</div>
+			<p><b>Логин:</b> {{ user.username }}</p>
+			<p><b>Имя:</b> {{ user.first_name }}</p>
+			<p><b>Фамилия:</b> {{ user.last_name }}</p>
+			{% if doctor != none %}	
+				<p><b>Отчество:</b> {{ doctor.middle }}</p>
+			{% endif %}
+			{% if doctor != none %}	
+				<p><b>Почта:</b> {{ user.email }}</p>
+				<p><b>Специализация:</b> {{ doctor.position }}</p>
+				<p><b>Образование:</b> {{ doctor.education }}</p>
+				<p><b>Профессиональные интересы:</b> {{ doctor.interests }}</p>
+				<p><b>Фото:</b></p>
+				{% if doctor.foto.url != none %}
+				<img class="img-fluid  rounded" src="{{ doctor.foto.url }}">
+				{% endif %}
+			{% endif %}
+			<p><b>Дата регистрации:</b> {{ user.date_joined }}</p>
+		</div>
+	</div>
+
+{% endblock %}

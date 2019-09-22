@@ -1,0 +1,286 @@
+@black: #000;
+@white: #FFF;
+@maincolor:#55C8BB;
+@special: #8FC3D4;
+@itemsc: #757575;
+@borderc: #3D3D3D;
+@black2: #222222;
+
+
+.text(@color, @font, @size, @letterspace, @fontweight){
+	color: @color;
+	font-family: @font; 
+	font-size: @size;
+	letter-spacing: @letterspace;
+	font-weight: @fontweight;
+}
+
+.margin(@top, @right, @bottom, @left){
+	margin-top: @top;
+	margin-right: @right;
+	margin-bottom: @bottom;
+	margin-left: @left;
+}
+
+.box-shadow(@v1, @v2, @v3, @v4, @color){
+  -webkit-box-shadow: @v1 @v2 @v3 @v4 @color;  
+  box-shadow: @v1 @v2 @v3 @v4 @color;
+}
+
+.flex(@value){
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-pack: @value;
+  -ms-flex-pack: @value;
+  justify-content: @value;
+}
+
+.transition(@value){
+  -webkit-transition: all @value;
+  -o-transition: all @value;
+  transition: all @value;
+}
+
+.transform(@value){
+  -webkit-transform: @value;
+  -ms-transform: @value;
+  transform: @value;
+}
+
+.direction(@value){
+	-ms-flex-direction: @value;
+  flex-direction: @value;
+}
+
+header{
+	padding-top:30px;
+	padding-bottom:30px;
+	.logo{
+		.l-logo{
+			.text(@black2, Lobster, 2em, 0, 200);
+			a{
+				text-decoration: none;
+			}
+		}
+		p{
+			.text(@black, Averta, 1em, 0, 400);
+			span{
+				text-align: center;
+			}
+		}
+		.address{
+			margin-left:15px;
+		}
+	}
+}
+
+.navbar{
+	background-color: @white;
+	z-index: 100;
+	.navbar-nav{
+		.nav-item{
+			.first{
+				padding-left: 0;
+				margin-left:0;
+			}
+			.nav-link{
+				.text('', Averta, 1.1em, 0, 600);
+			}
+		}
+	}
+}
+
+
+.name{  
+	margin-top:20px;
+	position:relative;
+	background-image: url(../images/cats.jpg);
+	background-position:center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: @black;
+	&-back{
+		background: rgba(0,0,0, .5);
+		height: 300px;
+		.flex(center);
+    align-items: center;
+		p{
+			.text(@white, Averta, 2.5em, 0, 600);
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+	}
+}
+
+.mainpage{  
+	position:relative;
+	background-image: url(../images/bear.jpg);
+	background-position:center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: @black;
+	height: 100%;
+	&-back{
+		background: rgba(0,0,0, .5);
+		height: 800px;
+		.flex(center);
+    align-items: center;
+		p{
+			.text(@white, Averta, 2.5em, 0, 600);
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+	}
+}
+
+
+.space{
+	height: 50px;
+}
+
+footer{
+	background-color:@black2;
+	height: 50px;
+	p{
+		margin: auto;
+		text-align: center;
+		.text(@white, Averta, 1.1em, 0, 400);
+	}
+}
+
+
+
+
+.nav{
+	.nav-item{
+		.nav-link:hover{
+			color: @black2;
+		}
+		.nm{
+			.text(@itemsc, Averta, 1.1em, 0, 600);
+		}
+		.dictionary{
+			padding-left: 5px;
+			padding-right: 5px;
+			.text(@itemsc, Averta, 1.1em, 0, 600);
+		}
+	}
+}
+
+.dict{
+	margin-bottom: 30px;
+}
+
+
+
+.active2{
+    color: @black2 !important;
+}
+
+.active2 a{
+    color: @black2 !important;
+}
+
+
+.doc-box{
+	cursor:pointer;
+	.doc-img{
+		height: 300px;
+		width: 100%;
+	}
+	text-align: center;
+	.f{
+		margin:0;
+		text-decoration: none;
+		.text(@black, Averta, 1.1em, 0, 400);
+	}
+	.s{
+		.text(@special, Averta, 1.0em, 0, 600);
+	}
+	margin-bottom: 20px;
+}
+
+.paginationf{
+	margin-top:30px;
+}
+
+.pagination{
+	.page-item{
+		a{
+			.text(@itemsc, Averta, 1.1em, 0, 600);
+		}
+		.page-link:hover{
+			color: @black2;
+		}
+	}
+}
+
+.docdetail{
+	.text(@black, Averta, 1.2em, 0, 400);
+}
+
+a{
+	color: @black;
+	text-decoration: none;
+}
+
+a:visited {
+    color: @black; /* Цвет посещенных ссылок */
+}
+a:active {
+   color: @black; /* Цвет активных ссылок */
+ }
+
+
+.table{
+	.main-line{
+		background-color:#D3D3D3;
+	}
+}
+
+.forms{
+	margin-bottom: 20px;
+	&-name{
+		padding:0;
+		margin:0;
+		margin-bottom: 10px;
+		.text(@itemsc, Averta, 1.2em, 0, 600);
+	
+	}
+}
+
+.forms-btn{
+	margin:0;
+	margin-bottom: 30px;
+}
+
+.comments-item{
+	background-color: @itemsc;
+	border-radius:10px;
+	padding: 20px;
+	margin-bottom: 25px;
+	p{
+		.text(@white, Averta, 1.1em, 0, 400);
+	}
+}
+
+@font-face {
+  font-family: "Lobster"; 
+  src: url(../fonts/Lobster.woff2) format("truetype"); 
+  font-style: normal; 
+  font-weight: normal;
+}
+
+
+
+@font-face {
+  font-family: "Averta"; 
+  src: url(../fonts/AvertaCY-Regular.woff2) format("truetype"); 
+  font-style: normal; 
+  font-weight: normal;
+}
+
