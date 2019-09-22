@@ -64,7 +64,7 @@ header{
 			}
 		}
 		p{
-			.text(@black, Averta, 1em, 0, 400);
+			.text(@black2, Averta, 1em, 0, 400);
 			span{
 				text-align: center;
 			}
@@ -95,14 +95,14 @@ header{
 .name{  
 	margin-top:20px;
 	position:relative;
-	background-image: url(../images/cats.jpg);
-	background-position:center center;
+	background-image: url(../images/main.jpg);
+	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	background-color: @black;
 	&-back{
-		background: rgba(0,0,0, .5);
+		background: rgba(0,0,0, .4);
 		height: 300px;
 		.flex(center);
     align-items: center;
@@ -110,7 +110,6 @@ header{
 			.text(@white, Averta, 2.5em, 0, 600);
 			text-transform: uppercase;
 			text-align: center;
-			margin-bottom: 50px;
 		}
 	}
 }
@@ -132,7 +131,6 @@ header{
 			.text(@white, Averta, 2.5em, 0, 600);
 			text-transform: uppercase;
 			text-align: center;
-			margin-bottom: 50px;
 		}
 	}
 }
@@ -259,12 +257,16 @@ a:active {
 }
 
 .comments-item{
-	background-color: @itemsc;
+	background-color: @black2;
 	border-radius:10px;
 	padding: 20px;
 	margin-bottom: 25px;
 	p{
-		.text(@white, Averta, 1.1em, 0, 400);
+		.text(@white, Averta, 1.2em, 0, 400);
+	}
+	.logo{
+		text-align: center;
+		font-weight: 600;
 	}
 }
 

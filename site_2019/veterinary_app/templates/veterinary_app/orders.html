@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Мои клиенты
+{% endblock %}
+
+{% block content_title %}
+	Мои клиенты
+{% endblock %}
+
+{% block content %}
+	<div class = "offset-md-2 col-md-8 comments">
+		<div class="row justify-content-md-center">
+			<button onclick="location.href='{% url 'new_order' %}'" class='m-4 forms-btn btn btn btn-secondary' type='submit'>Добавить новго клиента</button>
+		</div>
+		{% for item in heals %}
+			<div class="comments-item">
+				<p class="logo">Карточка клиента</p>
+				<p>Пациаент: {{ item.animal.name }}</p>
+				<p>Владелец: {{ item.owner_surname }} {{ item.owner_name }}</p>
+				<p>Предоставляемые слуги: 
+				{% for obj in item.services.all %}
+					<br><i class="fa fa-heartbeat" aria-hidden="true"></i> {{ obj.name }}
+				{% endfor %} </p>
+				<p>Статус: {{ item.status.name }}</p>
+				<p>Дата добавления: {{ item.datetime }}</p>
+				<div class="row justify-content-md-center">
+					<button onclick="location.href='{% url 'change_order' item.id %}'" class='m-3 forms-btn btn btn-warning' type='submit'><i class="fa fa-pencil" aria-hidden="true"></i></button>
+					<button onclick="location.href='{% url 'delete_order' item.id %}'" class='m-3 forms-btn btn btn-danger' type='submit'><i class="fa fa-times" aria-hidden="true"></i></button>	
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

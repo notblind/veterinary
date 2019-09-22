@@ -11,5 +11,5 @@ class ChangeForm(forms.Form):
 	email = forms.EmailField(label='Email', required=False)
 	education = forms.CharField(label='Образование', max_length=1500, required=False)
 	interests = forms.CharField(label='Профессиональные интересы', max_length=1500, required=False)
-	position = forms.ModelMultipleChoiceField(label='Специализация', queryset=positions.objects.all())
+	position = forms.ModelChoiceField(label='Специализация', queryset=positions.objects.all())
 	foto = forms.ImageField(label='Фото', required=False)

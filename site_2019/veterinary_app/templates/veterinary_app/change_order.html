@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+	Клиент
+{% endblock %}
+
+{% block content_title %}
+	Клиент
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-8 offset-md-2">
+		<form method="POST" >
+			{% csrf_token %}
+
+			<div class="forms">
+				<p class="forms-name">{{ form.animal.label }}</p>
+				{% bootstrap_field form.animal show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.owner_surname.label }}</p>
+				{% bootstrap_field form.owner_surname show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.owner_name.label }}</p>
+				{% bootstrap_field form.owner_name show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.services.label }} (Зажмите "Ctrl", чтобы выбрать несколько)</p>
+				{% bootstrap_field form.services show_label=False %}
+			</div>
+
+			<div class="forms">
+				<p class="forms-name">{{ form.status.label }}</p>
+				{% bootstrap_field form.status show_label=False %}
+			</div>
+
+			<button class='forms-btn btn btn-secondary' type='submit'>Изменить</button>
+		</form>
+
+
+	</div>
+
+{% endblock %}
