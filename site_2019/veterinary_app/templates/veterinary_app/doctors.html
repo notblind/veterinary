@@ -27,7 +27,7 @@
 		</div>
 
 		<div class="col-md-9">
-
+			
 			<ul class="dict nav nav-pills d-flex justify-content-center">
 			{% for item in dictionary %}
 
@@ -40,7 +40,7 @@
 			        <a class="dictionary nav-link {% if letter == '' %} active2 {% endif %}" href="./">Все буквы</a>
 			    </li>
 			</ul>
-
+			
 			<div class="row">
 				{% for item in doc %}
 					<div class="col-md-4 col-6 doc-box" onclick="location.href='{% url 'doctor_detail' id=item.id %}';">

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+	Связаться
+{% endblock %}
+
+{% block content_title %}
+	Связаться
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-8 offset-md-2">
+		<form method="POST" action="{% url 'feedback' %}">
+			{% csrf_token %}
+			{% for item in form %}
+				<div class="forms">
+					<p class="forms-name">{{ item.label }}</p>
+					{{ item }}
+				</div>
+			{% endfor %}
+			<button class='forms-btn btn btn-secondary' type='submit'>Отправить</button>
+		</form>
+	</div>
+{% endblock %}

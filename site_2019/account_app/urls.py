@@ -6,6 +6,7 @@ urlpatterns = [
     path('signup/', SignUp.as_view(), name='signup'),
     path('personal/', Personal, name='personal'),
     path('change/', Change.as_view(), name='change_profile'),
+    path('logout/', LogOut, name='logout'),
 ]
 from django.conf.urls.static import static
 from django.conf import settings

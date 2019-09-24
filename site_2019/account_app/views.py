@@ -35,7 +35,7 @@ def Personal(request, user=0):
 
 class Change(View):
 	
-	
+	@login_required
 	def get(self, request):
 		form = ChangeForm()
 		if request.user.is_authenticated:
@@ -52,12 +52,14 @@ class Change(View):
 					'education': doctor.education,
 					'interests': doctor.interests,
 					'position':  doctor.position,
+					'foto':  doctor.foto,
 				}
 				form = ChangeForm(initial=initial)
 			else:
 				form = ChangeForm()
 		return render(request, 'account_app/change.html', context={'form': form})
 
+	@login_required
 	def post(self, request):
 		form = ChangeForm(request.POST, request.FILES)
 	
@@ -69,7 +71,12 @@ class Change(View):
 			education = form.cleaned_data['education']
 			interests = form.cleaned_data['interests']
 			position = form.cleaned_data['position']
-			foto = request.FILES['foto']
+	
+			try:
+				foto = request.FILES['foto']
+			except:
+				foto = None
+
 
 			user_id = request.user.id
 			try:
@@ -91,13 +98,22 @@ class Change(View):
 				doctor_model.education = education
 				doctor_model.interests = interests
 				doctor_model.position = pos
-				doctor_model.foto = foto
+				if foto != None:
+					doctor_model.foto = foto
 				doctor_model.save()
 
 
 
 			return redirect('personal')
 		return redirect('main_page')
+
+
+from django.contrib.auth import logout
+
+@login_required
+def LogOut(request):
+	logout(request)
+	return reverse_lazy(main_page)
 
 
 

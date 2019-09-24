@@ -8,15 +8,12 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 from django.views.generic import View
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def MainPage(request):
-	if request.user.is_authenticated:
-		try:
-			doctor = doctors.objects.get(user=request.user.id)
-		except:
-			doctor = None
-	return render(request, 'veterinary_app/mainpage.html', context={'doctor': doctor})
+	return render(request, 'veterinary_app/mainpage.html')
 
 def Doctors(request, slug='all'):
 
@@ -25,12 +22,10 @@ def Doctors(request, slug='all'):
 	
 
 	if slug=='all':
-		#doctor_list = doctors.objects.all().filter(surname__startswith=letter)
-		doctor_list = doctors.objects.all()
+		doctor_list = doctors.objects.all().filter(user__last_name__startswith=letter)
 	else: 
 		position = positions.objects.get(slug=slug)
-		#doctor_list = doctors.objects.filter(position=position, surname__startswith=letter)
-		doctor_list = doctors.objects.filter(position=position)
+		doctor_list = doctors.objects.filter(position=position, user__last_name__startswith=letter)
 	position_list = positions.objects.all()
 
 	paginator = Paginator(doctor_list, 9)
@@ -79,10 +74,13 @@ from .forms import HealForm
 
 class NewOrder(View):
 
+	@login_required
 	def get(self, request):
-		form = HealForm()
+		doctor = doctors.objects.get(user=request.user.id)
+		form = HealForm(position=doctor.position)
 		return render(request, 'veterinary_app/new_order.html', context={'form': form})
 
+	@login_required
 	def post(self, request):
 		form = HealForm(request.POST)
 		if form.is_valid():
@@ -100,19 +98,24 @@ class NewOrder(View):
 			new_order.services.set(services)
 		return redirect('order')
 
+from django.db.models import Q
 
+@login_required
 def Orders(request):
-	heals = None
-	if request.user.is_authenticated:
-		try:
-			doctor = doctors.objects.get(user=request.user.id)
-		except:
-			doctor = None
-	if doctor != None:
-			heals = heal.objects.all().filter(doctor=doctor).order_by('-datetime')
-	serv = services.objects.all()
-	return render(request, 'veterinary_app/orders.html', context={'heals': heals, 'serv': serv})
+	search = ''
+	search = request.GET.get('search', '')
 
+
+	heals = None
+	try:
+		doctor = doctors.objects.get(user=request.user.id)
+	except:
+		doctor = None
+	if doctor != None:
+		heals = heal.objects.all().filter(Q(doctor=doctor) & (Q(animal__name__icontains=search) | Q(owner_surname__icontains=search) | Q(owner_name__icontains=search) | Q(services__name__icontains=search) | Q(status__name__icontains=search))).order_by('-datetime')
+	return render(request, 'veterinary_app/orders.html', context={'heals': heals})
+
+@login_required
 def DeleteOrder(request, id=None):
 	try:
 		h = heal.objects.get(id=id)
@@ -123,6 +126,7 @@ def DeleteOrder(request, id=None):
 
 class ChangeOrder(View):
 
+	@login_required
 	def get(self, request, id=None):
 		try:
 			h = heal.objects.get(id=id)
@@ -136,11 +140,14 @@ class ChangeOrder(View):
 				'services': h.services.all,
 				'status': h.status,
 			}
-			form = HealForm(initial=initial)
+			doctor = doctors.objects.get(user=request.user.id)
+			form = HealForm(position=doctor.position, initial=initial)
 		else:
-			form = HealForm()
+			doctor = doctors.objects.get(user=request.user.id)
+			form = HealForm(position=doctor.position)
 		return render(request, 'veterinary_app/change_order.html', context={'form': form})
 
+	@login_required
 	def post(self, request, id=None):
 		form = HealForm(request.POST)
 		if form.is_valid():

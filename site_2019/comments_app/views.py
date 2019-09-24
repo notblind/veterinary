@@ -13,7 +13,6 @@ from .forms import CommentsForm
 class Comments(View):
 	
 	def get(self, request):
-		form = CommentsForm()
 		model = CommentsModel.objects.order_by('-timedate')
 		paginator = Paginator(model, 3)
 		page_number = request.GET.get('page', 1)
@@ -30,6 +29,15 @@ class Comments(View):
 			next_url = '?page={}'.format(page.next_page_number())
 		else:
 			next_url = ''
+
+		if request.user.is_authenticated:
+			initial = {
+				'surname': request.user.first_name,
+				'name': request.user.last_name,
+			}
+			form = CommentsForm(initial=initial)
+		else:
+			form = CommentsForm()
 
 		context = {
 			'form':form,
