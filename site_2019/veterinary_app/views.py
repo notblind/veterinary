@@ -10,6 +10,7 @@ from django.core.paginator import Paginator
 from django.views.generic import View
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def MainPage(request):
@@ -72,15 +73,13 @@ def Services(request):
 
 from .forms import HealForm
 
-class NewOrder(View):
+class NewOrder(LoginRequiredMixin, View):
 
-	@login_required
 	def get(self, request):
 		doctor = doctors.objects.get(user=request.user.id)
 		form = HealForm(position=doctor.position)
 		return render(request, 'veterinary_app/new_order.html', context={'form': form})
 
-	@login_required
 	def post(self, request):
 		form = HealForm(request.POST)
 		if form.is_valid():
@@ -124,9 +123,9 @@ def DeleteOrder(request, id=None):
 	h.delete()
 	return redirect('order')
 
-class ChangeOrder(View):
 
-	@login_required
+class ChangeOrder(LoginRequiredMixin, View):
+
 	def get(self, request, id=None):
 		try:
 			h = heal.objects.get(id=id)
@@ -147,7 +146,6 @@ class ChangeOrder(View):
 			form = HealForm(position=doctor.position)
 		return render(request, 'veterinary_app/change_order.html', context={'form': form})
 
-	@login_required
 	def post(self, request, id=None):
 		form = HealForm(request.POST)
 		if form.is_valid():

@@ -151,6 +151,14 @@ footer p {
 .doc-box .doc-img {
   height: 300px;
   width: 100%;
+  z-index: 9;
+  background-color: #222222;
+  border-radius: 5px;
+}
+.doc-box .doc-img img {
+  height: 300px;
+  width: 100%;
+  border-radius: 5px;
 }
 .doc-box .f {
   margin: 0;

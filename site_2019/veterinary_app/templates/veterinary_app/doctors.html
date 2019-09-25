@@ -44,8 +44,10 @@
 			<div class="row">
 				{% for item in doc %}
 					<div class="col-md-4 col-6 doc-box" onclick="location.href='{% url 'doctor_detail' id=item.id %}';">
-						<img class="doc-img img-fluid  rounded" src="{% static 'images/doctors/' %}{{ item.id }}.jpg">
-						<p class="f">{{ item.user.last_name }} {{ item.user.first_name }} {{ item.middle }}</p>
+						<div class="doc-img">
+							<img class="img-fluid" src="{{ item.foto.url }}">
+						</div>
+						<p class="f">{{ item.user.last_name }} {{ item.user.first_name }} {{ item.middle }}</p> 
 						<p class="s">{{ item.position }}</p>
 					</div>
 				{% endfor %}
@@ -69,4 +71,5 @@
 
 		</div>
 	</div>
+	<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

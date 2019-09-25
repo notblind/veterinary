@@ -15,6 +15,8 @@ from django.views.generic import View
 
 from django.core.files.storage import FileSystemStorage
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
 class SignUp(generic.CreateView):
@@ -33,9 +35,8 @@ def Personal(request, user=0):
 		doctor = None
 	return render(request, 'account_app/personal.html', context={'doctor': doctor})
 
-class Change(View):
+class Change(LoginRequiredMixin, View):
 	
-	@login_required
 	def get(self, request):
 		form = ChangeForm()
 		if request.user.is_authenticated:
@@ -59,7 +60,6 @@ class Change(View):
 				form = ChangeForm()
 		return render(request, 'account_app/change.html', context={'form': form})
 
-	@login_required
 	def post(self, request):
 		form = ChangeForm(request.POST, request.FILES)
 	
